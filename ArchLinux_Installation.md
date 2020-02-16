@@ -41,7 +41,7 @@
     
     `mkfs.fat -F32 /dev/sdX1`
     
-    'mkdir /mnt/efi`
+    `mkdir /mnt/efi`
     
     `mount /dev/sdX1 /mnt/efi`
     
@@ -71,37 +71,63 @@
     
     `hwclock --systohc`
     
-10. Localization
-    nano /etc/locale.gen
-    locale-gen
-    nano /etc/locale.conf
+10. **Localization**
+    
+    `nano /etc/locale.gen`
+    
+    `locale-gen`
+    
+    `nano /etc/locale.conf`
         > LANG=en_CA.UTF-8
         > LC_Messages=en_CA.UTF-8
-    nano /etc/vconsole.conf
+        
+    `nano /etc/vconsole.conf`
         > KEYMAP=us-acentos
-11. Network configuration
-    nano /etc/hostname
+        
+11. **Network configuration**
+    
+    `nano /etc/hostname`
         > HOSTNAME
-    nano /etc/hosts
+        
+    `nano /etc/hosts`
         > 127.0.1   localhost
         > ::1       localhost
         > 127.0.1.1 HOSTNAME.localdomain HOSTNAME
-12. Set root password and add user
-    passwd
-    useradd -m cooper
-    passwd cooper
-    EDITOR=nano visudo
+
+12. **Set root password and add user`
+
+    `passwd`
+    
+    `useradd -m cooper`
+    
+    `passwd cooper`
+    
+    `EDITOR=nano visudo`
         > cooper ALL(ALL) ALL
-13. Boot loader
-    grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
-    grub-mkconfig -o /boot/grub/grub.cfg
-    nano /etc/default/grub
-    grub-mkconfig -o /boot/grub/grub.cfg
-14. Sorting mirrors
-    cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
-    rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist
-15. Graphic driver and desktop environement
-    lspci | grep -e VGA -e 3D //// command to check which component then install with pacman xf86-video-...
+
+13. **Boot loader**
+
+    `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
+    
+    `grub-mkconfig -o /boot/grub/grub.cfg
+    
+    `nano /etc/default/grub`
+    
+    `grub-mkconfig -o /boot/grub/grub.cfg
+    
+14. **Sorting mirrors**
+
+    `cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`
+    
+    `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
+
+15. **Graphic driver and desktop environement**
+
+    `lspci | grep -e VGA -e 3D` command to check which component then install with pacman
+        > intel = ``
+        > nvidia = ``
+        > amd = ``
+        > look for specific laptop when using intel+nvidia
     systemctl enable gdm
 16. Enable multilib repository
     nano /etc/pacman.conf
