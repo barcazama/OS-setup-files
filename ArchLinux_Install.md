@@ -7,6 +7,8 @@
   
 2. **Wifi set-up**
 
+    *Need to be updated with wifi-menu package, easier*
+
     `dmesg | grep firmware` command to control if firmware install is needed
     
     `iw dev` command to list device name
