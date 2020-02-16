@@ -50,12 +50,6 @@
     
 5. **Install essential packages** (base-devel is optional)
 
-    `pacman -Syu pacman-contrib`
-    
-    `cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`
-    
-    `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
-
     `pacstrap /mnt base base-devel linux linux-firmware`
     
 6. **Generate fstab and check result**
