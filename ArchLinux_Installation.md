@@ -98,7 +98,7 @@
     >
     > 127.0.1.1 HOSTNAME.localdomain HOSTNAME
 
-12. **Set root password and add user`
+12. **Set root password and add user**
 
     `passwd`
     
@@ -113,11 +113,11 @@
 
     `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
     
-    `grub-mkconfig -o /boot/grub/grub.cfg
+    `grub-mkconfig -o /boot/grub/grub.cfg`
     
     `nano /etc/default/grub`
     
-    `grub-mkconfig -o /boot/grub/grub.cfg
+    `grub-mkconfig -o /boot/grub/grub.cfg`
     
 14. **Sorting mirrors**
 
@@ -128,29 +128,23 @@
 15. **Graphic driver and desktop environement**
 
     `lspci | grep -e VGA -e 3D` command to check which component then install with pacman
-    > intel = ``
+    > intel = `xf86-video-intel vulkan-intel`
     >
-    > nvidia = ``
+    > nvidia = `xf86-video-nouveau` or for proprietary or vulkan `nvidia`
     >
-    > amd = ``
+    > amd = `xf86-video-amdgpu vulkan-radeon`
     >
     > *look for specific laptop when using intel+nvidia*
     
-    `systemctl enable gdm`
+    `systemctl enable gdm` *enable gdm login manager*
+    
+    `ls /usr/share/vulkan/icd.d/` *check if vulkan is installed correctly*
     
 16. **Enable multilib repository**
 
-    `nano /etc/pacman.conf`
+    `nano /etc/pacman.conf`    
     
-17. **Vulkan**
-
-    > Install either vulkan-intel nvidia vulkan-radeon
-    >
-    > Then check if it's ready
-    
-    `ls /usr/share/vulkan/icd.d/`
-    
-18. **Edit bashrc**
+17. **Edit bashrc**
 
     > edit ~/.bashrc
     
@@ -200,12 +194,19 @@
     git config --global user.name "USERNAME"
     git config --global user.email "EMAIL"
 2. Install AUR packages
+
     download snap from Aur
-    tar -xvf PACKAGE.tar.gz
-    cd PACKAGE
-    nano PKGBUILD
-    makepkg -sia
-    gpg --recv-keys ############# // if needed for key and trusted
+    
+    `tar -xvf PACKAGE.tar.gz`
+    
+    `cd PACKAGE`
+    
+    `nano PKGBUILD`
+    
+    `makepkg -sia`
+    
+    `gpg --recv-keys #############` *if needed for key and trusted*
+    
 3. List
     - yay: package helper for AURupdate if package is related to a fresh Arch News 
     - informant: prevent 
@@ -221,8 +222,11 @@
 1. rank mirrorlist and optimized pacman
 2. sudo pacman -Syu
 3. Remove orphans
+
     `sudo pacman -Rns $(pacman -Qtdq)`
+    
 4. Check for errors
+
     `sudo systemctl --failed`
     
     `sudo journalctl -p 3 -xb`
