@@ -102,20 +102,20 @@
     `nano /etc/hosts`
     > 127.0.0.1   localhost
     >
-    > ::1       localhost
+    > ::1         localhost
     >
-    > 127.0.1.1 HOSTNAME.localdomain HOSTNAME
+    > 127.0.1.1   HOSTNAME.localdomain HOSTNAME
 
 12. **Set root password and add user**
 
     `passwd`
     
-    `useradd -m cooper`
+    `useradd -m -G wheel USERNAME`
     
-    `passwd cooper`
+    `passwd USERNAME`
     
     `EDITOR=nano visudo`
-    > cooper ALL(ALL) ALL
+    > allow wheel group access
 
 13. **Boot loader**
 
