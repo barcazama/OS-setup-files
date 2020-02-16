@@ -144,8 +144,6 @@
     >
     > *look for specific laptop when using intel+nvidia*
     
-    `systemctl enable gdm` *enable gdm login manager*
-    
     `ls /usr/share/vulkan/icd.d/` *check if vulkan is installed correctly*
     
 16. **Enable multilib repository**
