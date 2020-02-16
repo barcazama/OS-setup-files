@@ -33,6 +33,7 @@
     
     `fdisk /dev/sdX`
     > 512M as efi type in CFDISK
+    >
     > rest formated as linux file system (default)
     
     `mkfs.ext4 /dev/sdX2`
@@ -78,21 +79,24 @@
     `locale-gen`
     
     `nano /etc/locale.conf`
-        > LANG=en_CA.UTF-8
-        > LC_Messages=en_CA.UTF-8
+    > LANG=en_CA.UTF-8
+    >
+    > LC_Messages=en_CA.UTF-8
         
     `nano /etc/vconsole.conf`
-        > KEYMAP=us-acentos
+    > KEYMAP=us-acentos
         
 11. **Network configuration**
     
     `nano /etc/hostname`
-        > HOSTNAME
+    > HOSTNAME
         
     `nano /etc/hosts`
-        > 127.0.1   localhost
-        > ::1       localhost
-        > 127.0.1.1 HOSTNAME.localdomain HOSTNAME
+    > 127.0.1   localhost
+    >
+    > ::1       localhost
+    >
+    > 127.0.1.1 HOSTNAME.localdomain HOSTNAME
 
 12. **Set root password and add user`
 
@@ -103,7 +107,7 @@
     `passwd cooper`
     
     `EDITOR=nano visudo`
-        > cooper ALL(ALL) ALL
+    > cooper ALL(ALL) ALL
 
 13. **Boot loader**
 
@@ -124,31 +128,52 @@
 15. **Graphic driver and desktop environement**
 
     `lspci | grep -e VGA -e 3D` command to check which component then install with pacman
-        > intel = ``
-        > nvidia = ``
-        > amd = ``
-        > look for specific laptop when using intel+nvidia
-    systemctl enable gdm
-16. Enable multilib repository
-    nano /etc/pacman.conf
-17. Vulkan
-        > Install either vulkan-intel nvidia vulkan-radeon
-        > Then check if it's ready
-    ls /usr/share/vulkan/icd.d/
-18. Edit bashrc
-        > edit ~/.bashrc
-    shopt -s autocd
-    neofetch //// if installed
-    informant check //// if installed and owning permission resolved
-    alias cpuP='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
-    alias cpuS='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
-18. End
-    exit
-    umount -R /mnt
-    reboot
+    > intel = ``
+    >
+    > nvidia = ``
+    >
+    > amd = ``
+    >
+    > *look for specific laptop when using intel+nvidia*
     
-INSTALL MAIN SOFTWARE
----------------------
+    `systemctl enable gdm`
+    
+16. **Enable multilib repository**
+
+    `nano /etc/pacman.conf`
+    
+17. **Vulkan**
+
+    > Install either vulkan-intel nvidia vulkan-radeon
+    >
+    > Then check if it's ready
+    
+    `ls /usr/share/vulkan/icd.d/`
+    
+18. **Edit bashrc**
+
+    > edit ~/.bashrc
+    
+    `shopt -s autocd`
+    
+    `neofetch` *if installed*
+    
+    `informant check` *if installed and owning permission resolved*
+    
+    `alias cpuP='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'`
+    
+    `alias cpuS='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'`
+
+18. **End**
+    
+    `exit`
+    
+    `umount -R /mnt`
+    
+    `reboot`
+    
+## Install main softwares
+
 - neofetch
 - firefox
 - alacarte: allow edit of gnome dashboard
@@ -169,8 +194,8 @@ INSTALL MAIN SOFTWARE
 - lutris
 
 
-INSTALL AUR PKG
----------------
+## Install AUR PKG
+
 1. Initinal setup
     git config --global user.name "USERNAME"
     git config --global user.email "EMAIL"
@@ -191,27 +216,28 @@ INSTALL AUR PKG
     - slack-desktop
     
     
-MANTENANCE
-----------
-0. rank mirrorlist and optimized pacman
-1. sudo pacman -Syu
-2. Remove orphans
-    sudo pacman -Rns $(pacman -Qtdq)
-3. Check for errors
-    sudo systemctl --failed
-    sudo journalctl -p 3 -xb
+## Maintenance
+
+1. rank mirrorlist and optimized pacman
+2. sudo pacman -Syu
+3. Remove orphans
+    `sudo pacman -Rns $(pacman -Qtdq)`
+4. Check for errors
+    `sudo systemctl --failed`
+    
+    `sudo journalctl -p 3 -xb`
 
     
     
-NOTES
------
+## Notes
+
 1. make grub boot faster
 2. install key package
 3. setup firewall using ufw?
 4. encrypt home directory?
-7.
+5.
     - ADD codec (e.g. pepperflash)
     - ADD torrent software
     - ADD Matlab software
     - ADD Antidote Druid software
-3. Remove games from gnome-extra: pacman -Rs five-or-more four-in-a-row gnome-builder gnome-chess gnome-klotski gnome-mahjongg gnome-mines gnome-nidbbles gnome-robots gnome-sudoku
+6. Remove games from gnome-extra: pacman -Rs five-or-more four-in-a-row gnome-builder gnome-chess gnome-klotski gnome-mahjongg gnome-mines gnome-nidbbles gnome-robots gnome-sudoku
