@@ -64,7 +64,7 @@
     
 8. **Install needed packages**
 
-    `pacman -S nano sudo grub efibootmgr dhcpcd iproute2 wpa_supplicant pacman-conntrib iw xorg tlp git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
+    `pacman -S nano sudo grub efibootmgr dhcpcd iproute2 wpa_supplicant netctl pacman-conntrib iw xorg tlp git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
     
     microcode`amd-ucode` or `intel-ucode`
     
