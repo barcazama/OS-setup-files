@@ -64,7 +64,13 @@
     
 8. **Install needed packages**
 
-    `pacman -S nano sudo grub efibootmgr dhcpcd iproute2 wpa_supplicant pacman-conntrib iw xorg gnome gnome-extra chrome-gnome-shell tlp amd-ucode intel-ucode git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation arc-gtk-theme arc-icon-theme archlinux-wallpaper`
+    `pacman -S nano sudo grub efibootmgr dhcpcd iproute2 wpa_supplicant pacman-conntrib iw xorg tlp git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
+    
+    microcode`amd-ucode` or `intel-ucode`
+    
+    dektop environement `gnome gnome-extra chrome-gnome-shell arc-gtk-theme arc-icon-theme`
+    
+    `systemctl enable gdm`
     
     `pkgfile -u`
     
