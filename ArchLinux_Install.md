@@ -34,21 +34,27 @@
     `fdisk -l`
     
     `fdisk /dev/sdX`
-    > 512M as efi type in CFDISK
+    > 260M as efi type in CFDISK
     >
     > rest formated as linux file system (default)
     
     `mkfs.ext4 /dev/sdX2`
     
-    `mount /dev/sdX2 as /mnt`
-    
     `mkfs.fat -F32 /dev/sdX1`
+    
+    `mount /dev/sdX2 as /mnt`
     
     `mkdir /mnt/efi`
     
     `mount /dev/sdX1 /mnt/efi`
     
 5. **Install essential packages** (base-devel is optional)
+
+    `pacman -Syu pacman-contrib`
+    
+    `cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`
+    
+    `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
 
     `pacstrap /mnt base base-devel linux linux-firmware`
     
