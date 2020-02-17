@@ -67,9 +67,13 @@
     
 8. **Install needed packages**
 
-    `pacman -S nano sudo grub efibootmgr dhcpcd wpa_supplicant dialog netctl networkmanager pacman-conntrib iw xorg tlp git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
+    `pacman -S nano sudo grub efibootmgr pacman-contrib iw xorg git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
     
     microcode`amd-ucode` or `intel-ucode`
+    
+    laptop `tlp`
+    
+    network `dhcpcd wpa_supplicant dialog netctl networkmanager` *networkmanager is already included in gnome*
     
     dektop environement `gnome gnome-extra chrome-gnome-shell arc-gtk-theme arc-icon-theme`
     
