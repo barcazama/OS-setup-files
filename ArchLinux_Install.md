@@ -6,22 +6,25 @@
     `ls /sys/firmware/efi/efivars`
   
 2. **Wifi set-up**
+    - Manual
 
-    *Need to be updated with wifi-menu package, easier*
+        `dmesg | grep firmware` command to control if firmware install is needed
 
-    `dmesg | grep firmware` command to control if firmware install is needed
+        `iw dev` command to list wifi device name
+
+        `ip link set INTERFACE up` e.g INTERFACE = wlan0
+
+        `systemctl enable dhcpcd`
+
+        `iw dev INTERFACE scan | less` command to search available SSID
+
+        `wpa_passphrase SSID PASSWPA2 > /etc/wpa_supplicant/example.conf`
+
+        `wpa_supplicant -B -i INTERFACE -c /etc/wpa_supplicant/example.conf`
+        
+    - Wifi-Menu
     
-    `iw dev` command to list device name
-    
-    `ip link set INTERFACE up` e.g INTERFACE = wlan0
-    
-    `systemctl enable dhcpcd`
-    
-    `iw dev INTERFACE scan | less` command to search available SSID
-    
-    `wpa_passphrase SSID PASSWPA2 > /etc/wpa_supplicant/example.conf`
-    
-    `wpa_supplicant -B -i INTERFACE -c /etc/wpa_supplicant/example.conf`
+        `wifi-menu`
     
     `dhcpcd INTERFACE`
     
@@ -64,13 +67,15 @@
     
 8. **Install needed packages**
 
-    `pacman -S nano sudo grub efibootmgr dhcpcd iproute2 wpa_supplicant netctl pacman-conntrib iw xorg tlp git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
+    `pacman -S nano sudo grub efibootmgr dhcpcd wpa_supplicant dialog netctl networkmanager pacman-conntrib iw xorg tlp git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
     
     microcode`amd-ucode` or `intel-ucode`
     
     dektop environement `gnome gnome-extra chrome-gnome-shell arc-gtk-theme arc-icon-theme`
     
     `systemctl enable gdm`
+    
+    `systemctl enable networkmanager` or `systemctl enable dhcpcd`
     
     `pkgfile -u`
     
