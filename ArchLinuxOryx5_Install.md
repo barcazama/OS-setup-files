@@ -122,9 +122,7 @@ Needed packages: `lvm2`
     
     `mount /dev/sdX2 as /mnt`
     
-    `mkdir /mnt/boot/efi`
-    
-    `mount /dev/sdX1 /mnt/boot/efi`
+    `mount /dev/sdX1 /mnt/boot`
     
 5. **Install essential packages** (base-devel is optional)
 
