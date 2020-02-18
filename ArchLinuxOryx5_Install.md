@@ -33,7 +33,7 @@ Needed packages: `lvm2`
     
 3. Create physical volume on top of the LUKS container
 
-    `pvcreate /dev/mapper/cryptlvm`
+    `pvcreate --dataalignment 1m /dev/mapper/cryptlvm`
     
 4. Create volume group
 
