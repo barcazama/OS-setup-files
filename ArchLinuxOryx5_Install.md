@@ -8,7 +8,7 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
 ## Wipe data
 1. Create a temporary encrypted container
 
-    `cryptsetup open --type plain -d dev/urandom /dev/<block-device> to_be_wiped
+    `cryptsetup open --type plain -d dev/urandom /dev/<block-device> to_be_wiped`
     
 2. Verify the partition exist with `lsblk`
 
@@ -19,6 +19,57 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
 4. Close temporary container
 
     `cryptsetup close to_be_wiped`
+    
+## Formating for LVM on LUKS
+Needed packages: `lvm2`
+
+1. Encrypt everything but /boot containing /boot/efi where sdXX is the whole disk except /boot
+
+    `cryptsetup -v luksFormat /dev/sdXX` 
+    
+2. Open container. Will be available under /dev/mapper/cryptlvm
+
+    `cryptsetup open /dev/sdXX cryptlvm`
+    
+3. Create physical volume on top of the LUKS container
+
+    `pvcreate /dev/mapper/cryptlvm`
+    
+4. Create volume group
+
+    `vgcreate Main /dev/mapper/cryptlvm`
+    
+5. Create all logical volume on the volume group
+    
+    `lvcreate -L 8G Main -n swap`
+    
+    `lvcreate -L 100%FREE -n root`
+    
+6. Format file system on each volume
+    
+    `mkfs.ext4 /dev/Main/root`
+    
+    `mkswap /etc/Main/swap`
+    
+    *Don't forget to prepare /boot/efi*
+    
+7. Mount filesystems
+    
+    `mount /dev/Main/root /mnt`
+    
+    `mkdir /mnt/boot/efi`
+    
+    `mount /dev/sdXX /mnt/boot/efi`
+    
+    `swapon /dev/Main/swap`
+
+8. Configure mkinitcpio, add hooks to mkinitcpio.conf
+
+    `HOOKS=(base udev autodetect keyboard keymap consolefont modconf block encrypt lvm2 filesystems fsck)`
+
+9. Configure the bootloader
+    
+    `cryptdevice=UUID=device-UUID:cryptlvm root=/dev/MyVolGroup/root`
 
 ## Base setup
 1. **Verify the boot mode, if exist then UEFI mode is enable**
@@ -53,6 +104,12 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
     `timedatectl set-ntp true`
     
 4. **Partition the disks**
+    Follow LUKS guide at the top
+    
+    fdisk signature:
+    - 1 for EFI
+    - 19 for swap
+    - 20 for root
 
     `fdisk -l`
     
@@ -67,9 +124,9 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
     
     `mount /dev/sdX2 as /mnt`
     
-    `mkdir /mnt/efi`
+    `mkdir /mnt/boot/efi`
     
-    `mount /dev/sdX1 /mnt/efi`
+    `mount /dev/sdX1 /mnt/boot/efi`
     
 5. **Install essential packages** (base-devel is optional)
 
@@ -79,6 +136,8 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
 
     `genfstab -U /mnt >> /mnt/etc/fstab`
     
+    Add the option `noatime,errors=remount-ro` to root mount for nvme (was in System76 base fstab)
+    
     `nano /mnt/etc/fstab`
     
 7. **Chroot**
@@ -87,19 +146,17 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
     
 8. **Install needed packages**
 
-    `pacman -S nano sudo grub efibootmgr pacman-contrib iw xorg git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation`
+    `pacman -Syu sudo nano grub efibootmgr pacman-contrib bash-completion pkgfile linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
-    microcode`amd-ucode` or `intel-ucode`
-    
-    laptop `tlp`
-    
-    network `dhcpcd wpa_supplicant dialog netctl networkmanager` *networkmanager is already included in gnome*
+    `pacman -S xf86-video-intel xf86-video-nouveau mesa mesa-demos acpi acpid`
     
     dektop environement `gnome gnome-extra chrome-gnome-shell arc-gtk-theme arc-icon-theme`
     
     `systemctl enable gdm`
     
-    `systemctl enable networkmanager` or `systemctl enable dhcpcd`
+    `systemctl enable NetworkManager`
+    
+    `systemctl enable acpid`
     
     `pkgfile -u`
     
@@ -148,7 +205,7 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
 
 13. **Boot loader**
 
-    `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
+    `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB`
     
     `grub-mkconfig -o /boot/grub/grub.cfg`
     
@@ -161,25 +218,20 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
     `cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`
     
     `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
-
-15. **Graphic driver and desktop environement**
-
-    `lspci | grep -e VGA -e 3D` command to check which component then install with pacman
-    > intel = `xf86-video-intel vulkan-intel`
-    >
-    > nvidia = `xf86-video-nouveau` or for proprietary or vulkan `nvidia`
-    >
-    > amd = `xf86-video-amdgpu vulkan-radeon`
-    >
-    > *look for specific laptop when using intel+nvidia*
     
-    `ls /usr/share/vulkan/icd.d/` *check if vulkan is installed correctly*
-    
-16. **Enable multilib repository**
+15. **Enable multilib repository**
 
     `nano /etc/pacman.conf`    
+
+16. **End**
     
-17. **Edit bashrc**
+    `exit`
+    
+    `umount -R /mnt`
+    
+    `reboot`
+    
+00. **Edit bashrc**
 
     > edit ~/.bashrc
     
@@ -192,14 +244,15 @@ Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in t
     `alias cpuP='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'`
     
     `alias cpuS='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'`
-
-18. **End**
     
-    `exit`
+01. **Install System76 drivers**
+    All driver are in the Aur
     
-    `umount -R /mnt`
+    `systemctl enable --now system76-firmware-daemon`
     
-    `reboot`
+    `systemctl enable --now system76-backlight --user`
+    
+    `systemctl enable --now system76`
     
 ## Install main softwares
 
