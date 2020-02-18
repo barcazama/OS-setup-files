@@ -155,7 +155,7 @@ Needed packages: `lvm2`
 10. **In case of encryption**
     Add Hooks to /etc/mkinitcpio.conf (add keymaps in case of US keyboard not desired)
     
-    `HOOKS=(base udev autodetect keyboard consolefont modconf block encrypt lvm2 filesystems fsck)`
+    `HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems fsck)`
     
     `mkinitcpio -p linux` 
     
@@ -208,25 +208,21 @@ Needed packages: `lvm2`
 
     `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB`
     
-    `grub-mkconfig -o /boot/grub/grub.cfg`
-    
-    `nano /etc/default/grub`
+    `nano /etc/default/grub` set option if LUKS
     
     `grub-mkconfig -o /boot/grub/grub.cfg`
     
     
     Add somewhere if *LUKS*:
     
-    `cryptdevice=UUID=device-UUID:cryptlvm root=/dev/MyVolGroup/root`
+    `GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=/dev/sdXX:volgroup0 root=/dev/volgroup0/root loglevel=3 quiet"`
     
     
 16. **Enable multilib repository**
 
     `nano /etc/pacman.conf`
     
-    `pacman -S xf86-video-intel nvidia nvidia-settings bumblebee mesa acpi acpid`
-    
-    `pacman -Syyu lib32virtualgl lib32nvidia-utils
+    `pacman -S xf86-video-intel nvidia nvidia-settings bumblebee mesa acpi acpid lib32-virtualgl lib32-nvidia-utils`
     
     `nvidia-xconfig`
         
@@ -280,7 +276,7 @@ Needed packages: `lvm2`
 - texlive-most texmaker
 - inkscape
 - gimp
-- pycharm: IDE python mainly
+- pycharm-community-...: IDE python mainly
 - atom: IDE
 - librecad
 - qgis
@@ -321,6 +317,7 @@ https://wiki.archlinux.org/index.php/Bumblebee#Bumblebee:_Optimus_for_Linux
     - synology-cloud-station-drive: cloud manager
     - whatsapp-nativefier-dark: what's app
     - slack-desktop
+    - protontricks
     
     
 ## Maintenance
