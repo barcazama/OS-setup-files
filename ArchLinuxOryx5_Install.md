@@ -61,13 +61,6 @@ Needed packages: `lvm2`
     
     `swapon /dev/volgroup0/swap`
 
-8. Configure mkinitcpio, add hooks to mkinitcpio.conf
-
-    `HOOKS=(base udev autodetect keyboard keymap consolefont modconf block encrypt lvm2 filesystems fsck)`
-
-9. Configure the bootloader
-    
-    `cryptdevice=UUID=device-UUID:cryptlvm root=/dev/MyVolGroup/root`
 
 ## Base setup
 01. **Verify the boot mode, if exist then UEFI mode is enable**
@@ -146,7 +139,16 @@ Needed packages: `lvm2`
     
     `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
     
-09. **Install needed packages**
+09. **In case of encryption**
+    Add Hooks to /etc/mkinitcpio.conf (add keymaps in case of US keyboard not desired)
+    
+    `HOOKS=(base udev autodetect keyboard consolefont modconf block encrypt lvm2 filesystems fsck)`
+    
+    `mkinitcpio -p linux` 
+    
+    `mkinitcpio -p linux-lts` 
+    
+10. **Install needed packages**
 
     `pacman -Syu sudo nano grub efibootmgr bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
@@ -162,13 +164,13 @@ Needed packages: `lvm2`
     
     `pkgfile -u`
     
-10. **Time zone**
+11. **Time zone**
 
     `ln -sf /usr/share/zoneinfo/Canada/Eastern /etc/localtime`
     
     `hwclock --systohc`
     
-11. **Localization**
+12. **Localization**
     
     `nano /etc/locale.gen`
     
@@ -182,7 +184,7 @@ Needed packages: `lvm2`
     `nano /etc/vconsole.conf`
     > KEYMAP=us-acentos
         
-12. **Network configuration**
+13. **Network configuration**
     
     `nano /etc/hostname`
     > HOSTNAME
@@ -194,7 +196,7 @@ Needed packages: `lvm2`
     >
     > 127.0.1.1   HOSTNAME.localdomain HOSTNAME
 
-13. **Set root password and add user**
+14. **Set root password and add user**
 
     `passwd`
     
@@ -205,7 +207,7 @@ Needed packages: `lvm2`
     `EDITOR=nano visudo`
     > allow wheel group access
 
-14. **Boot loader**
+15. **Boot loader**
 
     `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB`
     
@@ -216,11 +218,16 @@ Needed packages: `lvm2`
     `grub-mkconfig -o /boot/grub/grub.cfg`
     
     
-15. **Enable multilib repository**
+    Add somewhere if *LUKS*:
+    
+    `cryptdevice=UUID=device-UUID:cryptlvm root=/dev/MyVolGroup/root`
+    
+    
+16. **Enable multilib repository**
 
     `nano /etc/pacman.conf`    
 
-16. **End**
+17. **End**
     
     `exit`
     
