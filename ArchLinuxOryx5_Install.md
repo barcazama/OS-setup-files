@@ -126,7 +126,7 @@ Needed packages: `lvm2`
     
 5. **Install essential packages** (base-devel is optional)
 
-    `pacstrap /mnt base base-devel linux linux-firmware`
+    `pacstrap /mnt base base-devel linux`
     
 6. **Generate fstab and check result**
 
@@ -142,7 +142,7 @@ Needed packages: `lvm2`
     
 8. **Install needed packages**
 
-    `pacman -Syu sudo nano grub efibootmgr pacman-contrib bash-completion pkgfile linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
+    `pacman -Syu sudo nano grub efibootmgr pacman-contrib bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
     `pacman -S xf86-video-intel xf86-video-nouveau mesa mesa-demos acpi acpid`
     
