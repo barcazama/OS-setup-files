@@ -143,7 +143,13 @@ Needed packages: `lvm2`
 
     `pacman -Syu sudo nano grub efibootmgr bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
-    `pacman -S xf86-video-intel xf86-video-nouveau mesa mesa-demos acpi acpid`
+    `pacman -S xf86-video-intel nvidia nvidia-settings bumblebee mesa acpi acpid`
+    
+    `nvidia-xconfig`
+    
+    
+    Add user before this step
+    `gpasswd -a USER bumblebee`
     
     dektop environement `gnome chrome-gnome-shell evolution gnome-nettool gnome-recipes gnome-tweaks gnome-usage nautilus-sendto nautilus-image-converter`
     
@@ -152,6 +158,8 @@ Needed packages: `lvm2`
     `systemctl enable NetworkManager`
     
     `systemctl enable acpid`
+    
+    `systemctl enable bumblebee`
     
     `pkgfile -u`
     
@@ -226,6 +234,8 @@ Needed packages: `lvm2`
 16. **Enable multilib repository**
 
     `nano /etc/pacman.conf`    
+    
+    `pacman -Syyu lib32virtualgl lib32nvidia-utils
 
 17. **End**
     
@@ -276,6 +286,10 @@ Needed packages: `lvm2`
 - winetricks
 - steam: gaming
 - lutris
+
+
+## Configure Bumblebee and nvidia
+https://wiki.archlinux.org/index.php/Bumblebee#Bumblebee:_Optimus_for_Linux
 
 
 ## Install AUR PKG
