@@ -67,7 +67,7 @@
     
 8. **Install needed packages**
 
-    `pacman -S nano sudo grub efibootmgr pacman-contrib iw xorg git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation archlinux-wallpaper`
+    `pacman -S nano sudo grub efibootmgr pacman-contrib iw xorg git flashplugin pepper-flash bash-completion pkgfile linux-lts linux-headers linux-lts-headers ttf-liberation`
     
     microcode`amd-ucode` or `intel-ucode`
     
@@ -246,7 +246,22 @@
     
     `sudo journalctl -p 3 -xb`
 
-    
+## Gnome customisation
+The following list of extensions might be installed:
+- Alt Tab: Raise First Window
+- Always Show Workspaces
+- Desktop Icons
+- Do Not Disturb
+- KStatusNotifierItem/AppIndicator Support
+- Pop Battery Icon Fix
+- Pop Shop Details
+- Sound Input & Output Device Chooser
+- Suspend Button
+- System76 Power
+
+The following packages might be installed:
+- archlinux-wallpaper
+  
     
 ## Notes
 
