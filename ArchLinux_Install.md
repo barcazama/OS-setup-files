@@ -163,8 +163,6 @@
 
     > edit ~/.bashrc
     
-    `shopt -s autocd`
-    
     `neofetch` *if installed*
     
     `informant check` *if installed and owning permission resolved*
