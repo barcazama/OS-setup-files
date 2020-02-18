@@ -150,7 +150,7 @@ Needed packages: `lvm2`
     
     `pacman -S xf86-video-intel xf86-video-nouveau mesa mesa-demos acpi acpid`
     
-    dektop environement `gnome gnome-extra chrome-gnome-shell arc-gtk-theme arc-icon-theme`
+    dektop environement `gnome chrome-gnome-shell evolution gnome-nettool gnome-recipes gnome-tweaks gnome-usage nautilus-sendto nautilus-image-converter`
     
     `systemctl enable gdm`
     
