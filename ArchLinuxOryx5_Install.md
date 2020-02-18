@@ -70,11 +70,11 @@ Needed packages: `lvm2`
     `cryptdevice=UUID=device-UUID:cryptlvm root=/dev/MyVolGroup/root`
 
 ## Base setup
-1. **Verify the boot mode, if exist then UEFI mode is enable**
+01. **Verify the boot mode, if exist then UEFI mode is enable**
 
     `ls /sys/firmware/efi/efivars`
   
-2. **Wifi set-up**
+02. **Wifi set-up**
     - Manual
 
         `dmesg | grep firmware` command to control if firmware install is needed
@@ -97,11 +97,11 @@ Needed packages: `lvm2`
     
     `dhcpcd INTERFACE`
     
-3. **Update the system clock**
+03. **Update the system clock**
 
     `timedatectl set-ntp true`
     
-4. **Partition the disks**
+04. **Partition the disks**
     Follow LUKS guide at the top
     
     fdisk signature:
@@ -124,11 +124,11 @@ Needed packages: `lvm2`
     
     `mount /dev/sdX1 /mnt/boot`
     
-5. **Install essential packages** (base-devel is optional)
+05. **Install essential packages** (base-devel is optional)
 
-    `pacstrap /mnt base base-devel linux`
+    `pacstrap /mnt base base-devel linux pacman-contrib`
     
-6. **Generate fstab and check result**
+06. **Generate fstab and check result**
 
     `genfstab -U /mnt >> /mnt/etc/fstab`
     
@@ -136,13 +136,19 @@ Needed packages: `lvm2`
     
     `nano /mnt/etc/fstab`
     
-7. **Chroot**
+07. **Chroot**
 
     `arch-chroot /mnt`
     
-8. **Install needed packages**
+08. **Sorting mirrors**
 
-    `pacman -Syu sudo nano grub efibootmgr pacman-contrib bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
+    `cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`
+    
+    `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
+    
+09. **Install needed packages**
+
+    `pacman -Syu sudo nano grub efibootmgr bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
     `pacman -S xf86-video-intel xf86-video-nouveau mesa mesa-demos acpi acpid`
     
@@ -156,13 +162,13 @@ Needed packages: `lvm2`
     
     `pkgfile -u`
     
-8. **Time zone**
+10. **Time zone**
 
     `ln -sf /usr/share/zoneinfo/Canada/Eastern /etc/localtime`
     
     `hwclock --systohc`
     
-10. **Localization**
+11. **Localization**
     
     `nano /etc/locale.gen`
     
@@ -176,7 +182,7 @@ Needed packages: `lvm2`
     `nano /etc/vconsole.conf`
     > KEYMAP=us-acentos
         
-11. **Network configuration**
+12. **Network configuration**
     
     `nano /etc/hostname`
     > HOSTNAME
@@ -188,7 +194,7 @@ Needed packages: `lvm2`
     >
     > 127.0.1.1   HOSTNAME.localdomain HOSTNAME
 
-12. **Set root password and add user**
+13. **Set root password and add user**
 
     `passwd`
     
@@ -199,7 +205,7 @@ Needed packages: `lvm2`
     `EDITOR=nano visudo`
     > allow wheel group access
 
-13. **Boot loader**
+14. **Boot loader**
 
     `grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB`
     
@@ -209,11 +215,6 @@ Needed packages: `lvm2`
     
     `grub-mkconfig -o /boot/grub/grub.cfg`
     
-14. **Sorting mirrors**
-
-    `cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak`
-    
-    `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
     
 15. **Enable multilib repository**
 
