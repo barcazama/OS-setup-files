@@ -139,16 +139,7 @@ Needed packages: `lvm2`
     
     `rankmirrors -n 6 /etc/pacman.d/mirrorlist.bak > /etc/pacman.d/mirrorlist`
     
-09. **In case of encryption**
-    Add Hooks to /etc/mkinitcpio.conf (add keymaps in case of US keyboard not desired)
-    
-    `HOOKS=(base udev autodetect keyboard consolefont modconf block encrypt lvm2 filesystems fsck)`
-    
-    `mkinitcpio -p linux` 
-    
-    `mkinitcpio -p linux-lts` 
-    
-10. **Install needed packages**
+09. **Install needed packages**
 
     `pacman -Syu sudo nano grub efibootmgr bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
@@ -163,6 +154,15 @@ Needed packages: `lvm2`
     `systemctl enable acpid`
     
     `pkgfile -u`
+    
+10. **In case of encryption**
+    Add Hooks to /etc/mkinitcpio.conf (add keymaps in case of US keyboard not desired)
+    
+    `HOOKS=(base udev autodetect keyboard consolefont modconf block encrypt lvm2 filesystems fsck)`
+    
+    `mkinitcpio -p linux` 
+    
+    `mkinitcpio -p linux-lts` 
     
 11. **Time zone**
 
