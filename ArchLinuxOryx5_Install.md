@@ -143,23 +143,12 @@ Needed packages: `lvm2`
 
     `pacman -Syu sudo nano grub efibootmgr bash-completion pkgfile linux-firmware linux-lts linux-headers linux-lts-headers xorg iw git flashplugin pepper-flash netctl intel-ucode tlp ttf-liberation pluseaudio alsa dialog wpa_supplicant netctl networkmanager`
     
-    `pacman -S xf86-video-intel nvidia nvidia-settings bumblebee mesa acpi acpid`
-    
-    `nvidia-xconfig`
-    
-    
-    Add user before this step
-    `gpasswd -a USER bumblebee`
     
     dektop environement `gnome chrome-gnome-shell evolution gnome-nettool gnome-recipes gnome-tweaks gnome-usage nautilus-sendto nautilus-image-converter`
     
     `systemctl enable gdm`
     
     `systemctl enable NetworkManager`
-    
-    `systemctl enable acpid`
-    
-    `systemctl enable bumblebee`
     
     `pkgfile -u`
     
@@ -233,9 +222,22 @@ Needed packages: `lvm2`
     
 16. **Enable multilib repository**
 
-    `nano /etc/pacman.conf`    
+    `nano /etc/pacman.conf`
+    
+    `pacman -S xf86-video-intel nvidia nvidia-settings bumblebee mesa acpi acpid`
     
     `pacman -Syyu lib32virtualgl lib32nvidia-utils
+    
+    `nvidia-xconfig`
+        
+     Add user before this step
+     
+    `gpasswd -a USER bumblebee`
+    
+    `systemctl enable acpid`
+    
+    `systemctl enable bumblebee`
+    
 
 17. **End**
     
