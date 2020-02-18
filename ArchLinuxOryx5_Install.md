@@ -37,31 +37,29 @@ Needed packages: `lvm2`
     
 4. Create volume group
 
-    `vgcreate Main /dev/mapper/cryptlvm`
+    `vgcreate volgroup0 /dev/mapper/cryptlvm`
     
 5. Create all logical volume on the volume group
     
-    `lvcreate -L 8G Main -n swap`
+    `lvcreate -L 8G volgroup0 -n swap`
     
-    `lvcreate -L 100%FREE -n root`
+    `lvcreate -l 100%FREE volgroup0 -n root`
     
 6. Format file system on each volume
     
-    `mkfs.ext4 /dev/Main/root`
+    `mkfs.ext4 /dev/volgroup0/root`
     
-    `mkswap /etc/Main/swap`
+    `mkswap /dev/volgroup0/swap`
     
     *Don't forget to prepare /boot/efi*
     
 7. Mount filesystems
     
-    `mount /dev/Main/root /mnt`
+    `mount /dev/volgroup0/root /mnt`
     
-    `mkdir /mnt/boot/efi`
+    `mount /dev/sdXX /mnt/boot` mount efi partition here
     
-    `mount /dev/sdXX /mnt/boot/efi`
-    
-    `swapon /dev/Main/swap`
+    `swapon /dev/volgroup0/swap`
 
 8. Configure mkinitcpio, add hooks to mkinitcpio.conf
 
