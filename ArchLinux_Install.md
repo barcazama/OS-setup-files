@@ -216,7 +216,7 @@
     
     `nano PKGBUILD`
     
-    `makepkg -sia`
+    `makepkg -si`
     
     `gpg --recv-keys #############` *if needed for key and trusted*
     
