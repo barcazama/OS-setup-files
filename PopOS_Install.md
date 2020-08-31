@@ -3,7 +3,8 @@
 ## Install official softwares
 
 ### Essential
-`sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent browser-plugin-freshplayer-pepperflash gnome-tweaks discord spotify-client`
+Update and setup backup: `sudo apt update && sudo apt upgrade && sudo apt install timeshift`
+Install main packages: `sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent gnome-tweaks discord`browser-plugin-freshplayer-pepperflash `
 
 snapd
 rambox (skype, whatsapp, telegram,slack)
@@ -26,6 +27,7 @@ popcorn time
 VM oracle
 VLC
 steamproton
+synology
 
 Gnome extensions:
 - mouse-battery
