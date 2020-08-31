@@ -27,6 +27,11 @@ VM oracle
 VLC
 steamproton
 
+Gnome extensions:
+- mouse-battery
+- KStatusNotifierItem
+- Sound Input & Output Device Chooser 
+
 
 ### Softwares list
 - **freecad:** autocad opensource alternative for 3D
