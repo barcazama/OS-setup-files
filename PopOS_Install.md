@@ -3,7 +3,30 @@
 ## Install official softwares
 
 ### Essential
-`sudo apt install snapd telegram-desktop wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent browser-plugin-freshplayer-pepperflash gnome-tweaks slack-desktop discord spotify-client`
+`sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent browser-plugin-freshplayer-pepperflash gnome-tweaks discord spotify-client`
+
+snapd
+rambox (skype, whatsapp, telegram,slack)
+freecad
+qgis
+inkscape
+alacarte
+joplin
+tutanota
+gtg (getting things done)
+microsoft team
+timeshift
+anydesk
+citrix
+chromium
+antidote
+matlab
+pdfarranger
+popcorn time
+VM oracle
+VLC
+steamproton
+
 
 ### Softwares list
 - **freecad:** autocad opensource alternative for 3D
@@ -49,12 +72,31 @@
 
 ## Action
 Edit `~/.bashrc`
-> neofetch
->
-> alias cpuP='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
->
-> alias cpuS='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+>>>
+# Custom
+neofetch
+
+# Alias - Maintenance
+alias sudo='sudo '
+alias mirror='reflector --verbose --country "Netherlands" --country "Germany" --age 12 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update='sudo mirror ; yay -Syu ; sudo snap refresh'
+alias maintenance='sudo paccache -r ; sudo pacman -Rns $(pacman -Qtdq) ; npm audit fix ; arch-audit'
+
+# Alias - CPU
+alias cpuP='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias cpuS='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+
+# Alias - Game
+alias starcitizen='sudo sysctl -w vm.max_map_count=16777216 ; cpuP'
+
+# Alias - Work only under Kali
+#alias discover='cd /opt/discover && ./discover.sh'
+
+# Alias - Testing
+#alias game='optimus-manager --switch nvidia'
+#alias normal='optimus-manager --switch hybrid'
+#alias VMwebcam='VBoxManage controlvm Windows webcam attach /dev/video0'
+>>>>
 
 ## Notes
-- Make sure to follow ryzen tutorial: https://forum.manjaro.org/t/amd-ryzen-problems-and-fixes/55533
 - Make sure vulkan is installed https://wiki.archlinux.org/index.php/Vulkan
