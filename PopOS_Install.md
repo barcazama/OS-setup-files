@@ -3,57 +3,23 @@
 ## Install official softwares
 
 ### Essential
-Update and setup backup: `sudo apt update && sudo apt upgrade && sudo apt install timeshift`
-Install main packages: `sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent gnome-tweaks discord`browser-plugin-freshplayer-pepperflash `
-
-snapd
-rambox (skype, whatsapp, telegram,slack)
-freecad
-qgis
-inkscape
-alacarte
-joplin
-tutanota
-gtg (getting things done)
-microsoft team
-timeshift
-anydesk
-citrix
-chromium
-antidote
-matlab
-pdfarranger
-popcorn time
-VM oracle
-VLC
-steamproton
-synology
-
-Gnome extensions:
+**Add architecture 32bits:** `sudo dpkg --add-architecture i386 `
+**Update and setup backup:** `sudo apt update && sudo apt upgrade && sudo apt install timeshift`
+**Setup tlp:** sudo apt install tlp tlp-rdw --no-install-recommends
+**Remove unused packages:** sudo apt purge geary
+**Install main packages:** `sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent gnome-tweaks discord ubuntu-restricted-extras libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libsqlite3-0:i386 telegram-desktop slack-desktop spotify-client qgis inkscape gimp snapd alacarte virtualbox pdfarranger powertop chromium`
+**Install flatpack base packages via PopShop:** Synology Drive,WhatsApp, MiscrosoftTeams, Skype, Tutanota, gtg, anydesk, 
+**Install snap base packages:** sudo snap install joplin
+**Install manually:** manually *matlab, antidote, citrix receiver and popcorn* and then create matlab shortcut via PopShop
+- https://www.citrix.com/downloads/workspace-app/
+- https://www.antidote.info/fr/?utm_source=druide.com&utm_medium=accueil&utm_campaign=vitrines&utm_content=bouton
+- https://popcorntime.app/
+- https://nl.mathworks.com/products/matlab.html
+**Gnome extensions:**
 - mouse-battery
 - KStatusNotifierItem
 - Sound Input & Output Device Chooser 
-
-
-### Softwares list
-- **freecad:** autocad opensource alternative for 3D
-- **librecad:** autocad opensource alternative for 2D
-- **qgis:** ArcGis opensource alternative, geomatic
-- **gimp:** photoshop opensource alternative
-- **inkscape:** adobe illustrator opensource alternative
-- **alacarte:** allow edit of gnome dashboard
-- **pycharm:** python3 IDE
-- **atom:** IDE for everthing? Need plugin for everything
-
-### Testing
-**Joplin:**
-  - install nodejs
-  - download using: `wget -O - https://raw.githubusercontent.com/laurent22/joplin/master`
-  - run `Joplin_and_update.sh | bash`
-  - create shortcuts
-    - terminal: `sudo ln -s /home/cooper/.joplin/Joplin.AppImage  /bin/joplin` or with `/usr/bin/joplin`?
-    - dash: use software alacarte to edit gnome menu
-    
+   
 ## Snap
 
 ### Commands
@@ -61,25 +27,9 @@ Gnome extensions:
 - Update snap packages: `snap refresh`
 - Search for packages: `snap find`
 
-### Softwares list
-- **whatsdesk:** whats'app application
-- **pycharm-community --classic:** python IDE
-
-
-## To download and manually install
-- Matlab (install matlab-support post install to automatically create shortcut and resolve dependancies)
-- Antidote Druid
-
-## Gnome customisation
-*Using the firefox extension*
-- AppIndicator Support
-- Sound Input and Output Device Chooser
-- CPU power manager
-- Extension Update Notifier
-
 ## Action
 Edit `~/.bashrc`
->>>
+>>>........
 # Custom
 neofetch
 
@@ -103,7 +53,4 @@ alias starcitizen='sudo sysctl -w vm.max_map_count=16777216 ; cpuP'
 #alias game='optimus-manager --switch nvidia'
 #alias normal='optimus-manager --switch hybrid'
 #alias VMwebcam='VBoxManage controlvm Windows webcam attach /dev/video0'
->>>>
-
-## Notes
-- Make sure vulkan is installed https://wiki.archlinux.org/index.php/Vulkan
+>>>>...............................
