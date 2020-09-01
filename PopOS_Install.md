@@ -11,7 +11,7 @@
 
 **Remove unused packages:** `sudo apt purge geary`
 
-**Install main packages:** `sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent gnome-tweaks discord ubuntu-restricted-extras libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libsqlite3-0:i386 telegram-desktop slack-desktop spotify-client qgis inkscape gimp snapd alacarte virtualbox pdfarranger powertop chromium`
+**Install main packages:** `sudo apt install wine winetricks texlive-base texlive-lang-french texmaker neofetch lutris openjdk-14-jre steam qbittorrent gnome-tweaks discord ubuntu-restricted-extras libgnutls30:i386 libldap-2.4-2:i386 libgpg-error0:i386 libsqlite3-0:i386 telegram-desktop slack-desktop spotify-client qgis inkscape gimp snapd alacarte virtualbox pdfarranger powertop chromium gnome-sushi`
 
 **Install flatpack base packages via PopShop:** Synology Drive, WhatsApp, MiscrosoftTeams, Skype, Tutanota, gtg, anydesk
 
