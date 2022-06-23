@@ -1,0 +1,16 @@
+1. Install Brew: $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/2. install/HEAD/install.sh)"
+3. Install Oh My Zsh: $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+4. Import .zshrc
+5. Install backup solution
+6. Install firefox
+
+List of software:
+inskape
+*pycharm
+shadow
+signal
+*spotify
+telegram
+webtorrent
+whatsapp
+*zotero
