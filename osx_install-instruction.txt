@@ -16,3 +16,4 @@ telegram
 webtorrent
 whatsapp
 *zotero
+joplin
