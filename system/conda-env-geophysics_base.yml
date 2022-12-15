@@ -1,0 +1,25 @@
+name: geophysics_base
+channels:
+  - conda-forge #manually added, maybe defaults channel is enough?
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - openpyxl
+  - pyyaml
+  - jupyter
+  - numpy
+  - matplotlib
+  - numba
+  - pandas
+  - pymesh2
+  - geopandas
+  - scikit-learn
+  - tensorflow
+  - triangle
+  - keras
+  - pykrige
+  - gstools
+  - pytest
+
+prefix: C:\Users\meghezirj\Anaconda3\envs\GEO4-1427

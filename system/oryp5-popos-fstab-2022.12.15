@@ -1,0 +1,8 @@
+# <file system> <mount point> <type> <options> <dump> <pass>
+
+PARTUUID=92de87bc-7669-4ff2-a2ef-e8b0011fcf0b	/boot/efi	vfat	umask=0077	0	0
+PARTUUID=f45e34fa-d764-454e-b5f5-4ea10c3a2171	/recovery	vfat	umask=0077	0	0
+/dev/mapper/data-swap	none	swap	defaults	0	0
+UUID=b28c2a4f-f6d9-4479-a3e2-49afa926ff13	/	ext4	noatime,errors=remount-ro	0	0
+UUID=be00031f-f11a-4f38-b962-68429b308a3c	/home/cooper/Media	ext4	nosuid,nodev,nofail,x-gvfs-show	0	0
+UUID=8b1ff1a9-722e-4ca9-872d-a74e80e66cda	/home/cooper/Storage	ext4	nosuid,nodev,nofail,x-gvfs-show	0	0

@@ -1,0 +1,33 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# Custom
+neofetch
+
+# Maintenance
+alias sudo='sudo '
+alias mirror='reflector --verbose --country Canada --country "United States" --age 12 --sort rate --save /etc/pacman.d/mirrorlist'
+alias update='yay -Syu && sudo snap refresh'
+alias maintenance='sudo mirror && sudo paccache -r && sudo pacman -Rns $(pacman -Qtdq)'
+
+# CPU
+alias cpuP='echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias cpuS='echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+
+# Game
+alias starcitizen='sudo sysctl -w vm.max_map_count=16777216'
+
+# Work only under Kali
+alias discover='cd /opt/discover && ./discover.sh'
+
+# Testing
+alias game='optimus-manager --switch nvidia'
+alias normal='optimus-manager --switch hybrid'
+alias VMwebcam='VBoxManage controlvm Windows webcam attach /dev/video0'
