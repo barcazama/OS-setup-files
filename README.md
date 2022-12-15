@@ -133,9 +133,11 @@ Various files used to configure linux and the different distributions
 ### Fedora
 - Improve DNF package manager speed
     - "vim /etc/dnf/dnf.conf"
-    - add: "max_parallel_downloads=8"
+    - add: "max_parallel_downloads=10"
     - add: "fastestmirror=True"
+    - add: "deltarpm=True"
+- Change hostname: "sudo hostnamectl set-hostname "oryxp-fedora"
 - Enable additional repository
-    - RPM Fusion for Fedora XX - Nonfree - Steam
+    - RPM Fusion for Fedora XX
 - ?Install flathub for easier management of flatpak (https://flatpak.org/setup/Fedora)
 - ?If default setup is not viable for hybrid graphics, concider: https://copr.fedorainfracloud.org/coprs/szydell/system76/
