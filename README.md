@@ -69,6 +69,7 @@ Various files used to configure linux and the different distributions
     - vlc
     - transmission (or any other torrent client, webtorrent?)
     - tutanota
+    - todoist
 - games
     - wine64 (and wine32?)
     - steam/steam proton / vulkan
