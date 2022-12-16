@@ -41,9 +41,6 @@ Various files used to configure linux and the different distributions
     - TeXiFy IDEA
     - YAML / Ansible support
     - Docker
-    - Markdown (default?)
-    - Git (default?)
-    - GitHub (default?)
     - ?IdeaVim
     - ?Julia
     - ?Matlab Support
