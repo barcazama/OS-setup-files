@@ -48,7 +48,7 @@ Various files used to configure linux and the different distributions
 
 ### Packages
 - backup
-    - Timeshift (if local, just set to automatic)
+    - Timeshift (if local, just set to automatic) or btrfs snapshot system?
     - Vorta backup (+borg)
         - Repository: /home/cooper/Storage/borgbackup
         - SSH Key: Automatic
@@ -82,7 +82,7 @@ Various files used to configure linux and the different distributions
     - libreoffice
     - LaTeX / TexMaker
     - Vim
-    - Zotero
+    - Zotero (+Better BibTex)
 - Programming
     - Jetbrains toolbox: pycharm, dataspell
     - python3
