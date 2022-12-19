@@ -47,7 +47,8 @@ filetype plugin indent on    " required
 " ------------
 " VIM SETTINGS
 " ------------
-set nu "enable line number
+" set nu "enable absolute line number
+set rnu "enable relative line number
 set cul "highlight current line
 set incsearch "enable incremental search
 set hlsearch "enable highlight search
