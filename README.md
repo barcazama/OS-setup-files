@@ -3,7 +3,7 @@ Various files used to configure linux and the different distributions
 
 ## Important save before formating
 - make sure cloud save is good
-- backup .bashrc and .bash_aliases to github
+- backup .bashrc and .bash_aliases to github (.bash.d/aliases and .bash.d/config for fedora)
 - backup .vimrc
 - make sure any conda environment have an install file (and test it)
 - update list of important package (bellow)
@@ -137,5 +137,6 @@ Various files used to configure linux and the different distributions
 - Change hostname: "sudo hostnamectl set-hostname "oryxp-fedora"
 - Enable additional repository
     - RPM Fusion for Fedora XX
-- ?Install flathub for easier management of flatpak (https://flatpak.org/setup/Fedora)
-- ?If default setup is not viable for hybrid graphics, concider: https://copr.fedorainfracloud.org/coprs/szydell/system76/
+- Graphics (dual gpu):
+    - install system76 drivers (cf System76 website)
+    - use envycontrol to manage gpu (if system76 fail)
