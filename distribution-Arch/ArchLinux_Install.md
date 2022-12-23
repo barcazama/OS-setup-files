@@ -1,5 +1,7 @@
 # Arch Linux: Installation guide
 
+Consider using archinstall instead
+
 ## Base setup
 1. **Verify the boot mode, if exist then UEFI mode is enable**
 

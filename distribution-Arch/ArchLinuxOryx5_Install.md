@@ -1,4 +1,7 @@
 # Arch Linux on Oryx5: Installation guide
+
+Consider using archinstall instead
+
 Be sure to set in nvidia mode before installing.
 Make sure by running `lspci -k | grep -A 3 VGA` which should contain Nvidia in the list
 

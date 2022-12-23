@@ -140,3 +140,6 @@ Various files used to configure linux and the different distributions
 - Graphics (dual gpu):
     - install system76 drivers (cf System76 website)
     - use envycontrol to manage gpu (if system76 fail)
+    
+### Arch
+- Run archinstall`
