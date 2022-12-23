@@ -1,7 +1,9 @@
 # Aliases
 ## Navigation
-alias folder-documents='cd /home/cooper/Documents/'
-alias folder-studies='cd /home/cooper/Documents/studies/4.Master'
+alias nav-documents='cd /home/cooper/Documents/'
+alias nav-scripts='cd /home/cooper/versioncontrol-github/'
+alias nav-master='cd /home/cooper/Documents/studies/4.Master'
+alias nav-env-geophysics='conda activate geophysics_base'
 
 ## Update
 alias sudo='sudo '

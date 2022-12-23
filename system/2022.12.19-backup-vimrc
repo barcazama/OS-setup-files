@@ -25,11 +25,12 @@ Plugin 'preservim/nerdtree' " file explorer tree style
 Plugin 'vim-airline/vim-airline' " status line at the bottom
 Plugin 'ycm-core/YouCompleteMe' " autocomplete for VIM
 Plugin 'mg979/vim-visual-multi' " multi cursor support
-Plugin 'vim-python/python-syntax' " syntax highlight for python
-" Plugin 'vim-syntastic/syntastic' " check file for syntax errors
+Plugin 'vim-python/python-syntax' " syntax highlight for python " Plugin 'vim-syntastic/syntastic' " check file for syntax errors
 Plugin 'dense-analysis/ale' " alternative to syntastic, syntax errors
 Plugin 'preservim/vim-markdown' " syntax highlight for markdown
 Plugin 'nvie/vim-flake8' " plugin for flake8 WARNING, need to be installed
+Plugin 'sainnhe/gruvbox-material' " custom vim colorscheme
+Plugin 'puremourning/vimspector' " python debugger
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,6 +55,8 @@ set incsearch "enable incremental search
 set hlsearch "enable highlight search
 set spell "highlight misspelled words
 set spelllang=en,fr " set spelling
+set background=dark
+colorscheme gruvbox-material
 
 syntax on " enable vim syntax highlighting
 set t_Co=256 " enable 256 color for syntax highlighting (max=256)
@@ -74,11 +77,13 @@ let g:python_highlight_all = 1 " enable all highlight for python plugin
 let g:vim_markdown_folding_disabled = 0 " disable folding for markdown plugin
 let g:ale_completion_enabled = 1 " ale plugin completion
 let g:ale_linters = {'python': ['flake8']} " specify to use flake8 for correction (PE8)
-
+let g:vimspector_enable_mappings = 'HUMAN' " shortcuts configuration for vimspector
+"let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-config' )
 
 " ---------
 " VIM ALIAS
 " ---------
 nnoremap <space> za " change code folding shortcut to space bar
-nmap <F5> :w<CR>:!clear;python %<CR>
-imap <F5> <Esc>:w<CR>:!clear;python %<CR>
+nmap <F2> :w<CR>:!clear;python %<CR>
+imap <F2> <Esc>:w<CR>:!clear;python %<CR>
+nnoremap <C-g> :NERDTree<CR>
