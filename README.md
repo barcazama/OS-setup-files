@@ -40,7 +40,8 @@ Various files used to configure linux and the different distributions
     - PDF Viewer
     - TeXiFy IDEA
     - YAML / Ansible support
-    - Docker
+    - Key Promoter X
+    - Visual Studio Keymap
     - ?IdeaVim
     - ?Julia
     - ?Matlab Support
