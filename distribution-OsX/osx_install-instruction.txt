@@ -8,12 +8,8 @@
 
 List of software:
 inskape
-*pycharm
-shadow
+pycharm
 signal
-*spotify
-telegram
-webtorrent
-whatsapp
-*zotero
+fritz?
+zotero
 joplin
