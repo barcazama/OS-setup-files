@@ -3,7 +3,7 @@
 4. Import .zshrc
 5. Install backup solution
 6. Install firefox
-7. Install tex pacakges
+7. Install tex packages
 8. Install python: $ brew install python
 
 List of software:
