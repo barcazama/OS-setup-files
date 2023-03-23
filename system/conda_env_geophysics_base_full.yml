@@ -32,12 +32,12 @@ dependencies:
   - brotlipy=0.7.0=py310h5764c6d_1005
   - bzip2=1.0.8=h7f98852_4
   - c-ares=1.18.1=h7f98852_0
-  - ca-certificates=2022.12.7=ha878542_0
+  - ca-certificates=2022.10.11=h06a4308_0
   - cached-property=1.5.2=hd8ed1ab_1
   - cached_property=1.5.2=pyha770c72_1
   - cachetools=5.2.0=pyhd8ed1ab_0
   - cairo=1.16.0=ha61ee94_1014
-  - certifi=2022.12.7=pyhd8ed1ab_0
+  - certifi=2022.12.7=py310h06a4308_0
   - cffi=1.15.1=py310h255011f_2
   - cfitsio=4.2.0=hd9d235c_0
   - cftime=1.6.2=py310hde88566_1
@@ -52,6 +52,7 @@ dependencies:
   - cryptography=38.0.4=py310h597c629_0
   - curl=7.86.0=h7bff187_1
   - cycler=0.11.0=pyhd8ed1ab_0
+  - cython=0.29.32=py310h6a678d5_0
   - dataclasses=0.8=pyhc8e2a94_3
   - dbus=1.13.6=h5008d03_3
   - debugpy=1.6.4=py310hd8f1fbe_0
@@ -235,7 +236,7 @@ dependencies:
   - oauthlib=3.2.2=pyhd8ed1ab_0
   - openjpeg=2.5.0=h7d73246_1
   - openpyxl=3.0.10=py310h5764c6d_2
-  - openssl=1.1.1s=h0b41bf4_1
+  - openssl=1.1.1s=h7f8727e_0
   - opt_einsum=3.3.0=pyhd8ed1ab_1
   - packaging=22.0=pyhd8ed1ab_0
   - pandas=1.5.2=py310h769672d_0
@@ -330,7 +331,6 @@ dependencies:
   - tomli=2.0.1=pyhd8ed1ab_0
   - tornado=6.2=py310h5764c6d_1
   - traitlets=5.7.1=pyhd8ed1ab_0
-  - triangle=1.6=h9d30731_3
   - typing-extensions=4.4.0=hd8ed1ab_0
   - typing_extensions=4.4.0=pyha770c72_0
   - tzcode=2022g=h166bdaf_0
@@ -370,5 +370,8 @@ dependencies:
   - zlib=1.2.13=h166bdaf_4
   - zstd=1.5.2=h6239696_4
   - pip:
-    - keras==2.11.0
+      - keras==2.11.0
+      - pymesh==1.0.2
+      - triangle==20220202
+      - vtk==9.2.6
 prefix: /home/cooper/miniconda3/envs/geophysics_base
