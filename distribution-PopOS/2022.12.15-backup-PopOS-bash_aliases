@@ -1,38 +1,32 @@
-# Section: loading modules and configurations
-#neofetch
-PROMPT_DIRTRIM=1
-
 # Aliases
 ## Navigation
-alias folder-documents='cd /home/cooper/OneDrive/Documents/'
-alias folder-studies='cd /home/cooper/OneDrive/Documents/studies/4.Master'
+alias nav-documents='cd /home/cooper/Documents/'
+alias nav-scripts='cd /home/cooper/versioncontrol/'
+alias nav-master='cd /home/cooper/Documents/studies/4.Master'
+alias nav-env-geophysics='conda activate geophysics_base'
 
 ## Update
 alias sudo='sudo '
-alias update-script='sudo apt update && sudo apt upgrade && sudo apt autoremove && flatpak update'
-alias update-conda='conda update conda && pip install --upgrade pip'
+alias script-update='sudo apt update && sudo apt upgrade && sudo apt autoremove && flatpak update'
+alias script-update-conda='conda update conda && pip install --upgrade pip'
+
+## Shortcut
+alias nvim='exec /home/cooper/appimages/nvim.appimage'
+
+## Performance
+alias script-cpugovernor='cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor'
+alias script-interface-type='echo $XDG_SESSION_TYPE'
 
 ## Compress PDF
-compress-high() {
+script-compress-high() {
     # compress pdf $1 into $2 using minimizing size
     gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$2 $1
 }
-compress-medium() {
+script-compress-medium() {
 # compress pdf $1 into $2 using an average compression (equilibrium between quality and size)
     gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$2 $1
 }
-compress-low() {
+script-compress-low() {
 # compress $1.pdf into $2.pdf minimizing loss (only limited reduction of size)
-    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/preprint -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$2 $1
+    gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dNOPAUSE -dQUIET -dBATCH -sOutputFile=$2 $1
 }
-
-# pip bash completion start
-_pip_completion()
-{
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 2>/dev/null ) )
-}
-complete -o default -F _pip_completion pip
-# pip bash completion end
-
