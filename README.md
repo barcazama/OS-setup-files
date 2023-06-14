@@ -54,10 +54,9 @@ Various files used to configure linux and the different distributions
         - Repository: /home/cooper/Storage/borgbackup
         - SSH Key: Automatic
         - Compression LZ4
-    - InSync
+    - Megacloud (replacing InSync)
         - Document -> Document
         - Pictures -> Pictures
-        - Joplin handle it itself via OneDrive
 - terminal
     - bash-completion
     - vim (and vundle plugin: https://github.com/VundleVim/Vundle.vim)
@@ -80,7 +79,7 @@ Various files used to configure linux and the different distributions
 - Office
     - GIMP
     - Inkscape
-    - Joplin
+    - Marktext (replacing Joplin)
     - libreoffice
     - LaTeX / TexMaker
     - Vim
