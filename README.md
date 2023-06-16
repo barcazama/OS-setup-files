@@ -113,6 +113,7 @@ Various files used to configure linux and the different distributions
     - ?Popsicle (writting usb key)
 
 ## Setup guide
+- steam launch option for FSR: gamescope -h 720p -H 2560 -U -f -r 30 -- %command%
 - test update and cleaning script (for fedora, change for "sudo dnf update && sudo dnf upgrade")
 - graphic driver install
 - set automatic mount of disks
