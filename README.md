@@ -39,13 +39,7 @@ Various files used to configure linux and the different distributions
     - Past Images into Markdown
     - PDF Viewer
     - TeXiFy IDEA
-    - YAML / Ansible support
-    - Key Promoter X
     - Visual Studio Keymap
-    - ?IdeaVim
-    - ?Julia
-    - ?Matlab Support
-    - ?R Langauge for Intellij
 
 ### Packages
 - backup
